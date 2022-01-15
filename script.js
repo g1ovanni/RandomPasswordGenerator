@@ -35,20 +35,31 @@ document.querySelector('.create').addEventListener('click', function () {
   const password = new Array(passwordLength);
   let passFinal = 0;
   let randomNum = 0;
-  console.log(password);
-  console.log(passwordLength);
+  //   console.log(password);
+  //   console.log(passwordLength);
 
-  // 1.1. When there is no input
-  if (!passwordLength)
-    displayMessage('The password should have between 8 and 20 characters');
-
+  // 2. Generate random characters for each position
   // Creating a random password
   for (let i = 0; i < passwordLength; i++) {
     randomNum = Math.floor(Math.random() * charactersLength);
     password[i] = characters.charAt(randomNum);
   }
   passFinal = password.join('');
-  console.log(passFinal);
+  //   console.log(passFinal);
+
+  // 1.1. When there is no input
+  if (!passwordLength || passwordLength > 20 || passwordLength < 8) {
+    displayMessage('The password should have between 8 and 20 characters');
+    document.getElementById('password').style.width = '15rem';
+    document.querySelector('.password').textContent = '?';
+    document.getElementById('password').style.fontFamily = 'Press Start 2P';
+  } else {
+    document.querySelector('.password').textContent = passFinal;
+    document.getElementById('password').style.width = '1500px';
+    document.getElementById('password').style.fontFamily = 'VT323';
+    document.querySelector('.message').textContent =
+      'There is your new password!';
+  }
 });
 
 // console.log(`outside ${variable}`);
