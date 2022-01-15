@@ -16,7 +16,7 @@
 
 */
 
-// const charLength = 0;
+// const passwordLength = 0;
 // 0. Create event lister for 'Create' button
 // 1. Save number of characters for the variable
 
@@ -25,16 +25,30 @@ const displayMessage = function (message) {
 };
 
 document.querySelector('.create').addEventListener('click', function () {
-  const charLength = Number(document.querySelector('.charLength').value);
-  console.log(charLength);
+  const passwordLength = Number(
+    document.querySelector('.passwordLength').value
+  );
+  const characters =
+    '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!$%&/()=?+^*,.;:-_';
+  const charactersLength = characters.length;
+  // Array definition ('password')
+  const password = new Array(passwordLength);
+  let passFinal = 0;
+  let randomNum = 0;
+  console.log(password);
+  console.log(passwordLength);
 
   // 1.1. When there is no input
-  if (!charLength)
+  if (!passwordLength)
     displayMessage('The password should have between 8 and 20 characters');
 
-  // Array definition ('password')
-  const password = new Array(charLength);
-  console.log(password);
+  // Creating a random password
+  for (let i = 0; i < passwordLength; i++) {
+    randomNum = Math.floor(Math.random() * charactersLength);
+    password[i] = characters.charAt(randomNum);
+  }
+  passFinal = password.join('');
+  console.log(passFinal);
 });
 
 // console.log(`outside ${variable}`);
@@ -49,16 +63,16 @@ const displayMessage = function (message) {
 };
 
 document.querySelector(".create").addEventListener("click", function () {
-  const charLength = Number(document.querySelector(".charLength").value);
-  console.log(charLength, typeof charLength);
+  const passwordLength = Number(document.querySelector(".passwordLength").value);
+  console.log(passwordLength, typeof passwordLength);
 
   // When there is no input
-  if (!charLength) {
+  if (!passwordLength) {
     // document.querySelector('.message').textContent = '⛔️ No number!';
     displayMessage("⛔️ No number!");
 
     // When player wins
-  } else if (charLength === secretNumber) {
+  } else if (passwordLength === secretNumber) {
     // document.querySelector('.message').textContent = '🎉 Correct Number!';
     displayMessage("🎉 Correct Number!");
     document.querySelector(".number").textContent = secretNumber;
@@ -71,12 +85,12 @@ document.querySelector(".create").addEventListener("click", function () {
       document.querySelector(".highscore").textContent = highscore;
     }
 
-    // When charLength is wrong
-  } else if (charLength !== secretNumber) {
+    // When passwordLength is wrong
+  } else if (passwordLength !== secretNumber) {
     if (score > 1) {
       // document.querySelector('.message').textContent =
-      // charLength > secretNumber ? '📈 Too high!' : '📉 Too low!';
-      displayMessage(charLength > secretNumber ? "📈 Too high!" : "📉 Too low!");
+      // passwordLength > secretNumber ? '📈 Too high!' : '📉 Too low!';
+      displayMessage(passwordLength > secretNumber ? "📈 Too high!" : "📉 Too low!");
       score--;
       document.querySelector(".score").textContent = score;
     } else {
@@ -92,11 +106,11 @@ document.querySelector(".again").addEventListener("click", function () {
   score = 20;
   secretNumber = Math.trunc(Math.random() * 20) + 1;
 
-  // document.querySelector('.message').textContent = 'Start charlengthing...';
-  displayMessage("Start charlengthing...");
+  // document.querySelector('.message').textContent = 'Start passwordlengthing...';
+  displayMessage("Start passwordlengthing...");
   document.querySelector(".score").textContent = score;
   document.querySelector(".number").textContent = "?";
-  document.querySelector(".charLength").value = "";
+  document.querySelector(".passwordLength").value = "";
 
   document.querySelector("body").style.backgroundColor = "#222";
   document.querySelector(".number").style.width = "15rem";
