@@ -12,8 +12,6 @@
 3. Show password									✅
 4. Click again to enter a new number				✅
 
-- Math.floor and Math.random methods
-
 */
 
 // const passwordLength = 0;
@@ -35,8 +33,6 @@ document.querySelector('.create').addEventListener('click', function () {
   const password = new Array(passwordLength);
   let passFinal = 0;
   let randomNum = 0;
-  //   console.log(password);
-  //   console.log(passwordLength);
 
   // 2. Generate random characters for each position
   // Creating a random password
@@ -45,7 +41,6 @@ document.querySelector('.create').addEventListener('click', function () {
     password[i] = characters.charAt(randomNum);
   }
   passFinal = password.join('');
-  //   console.log(passFinal);
 
   // 1.1. When there is no input
   if (!passwordLength || passwordLength > 20 || passwordLength < 8) {
@@ -53,7 +48,9 @@ document.querySelector('.create').addEventListener('click', function () {
     document.getElementById('password').style.width = '15rem';
     document.querySelector('.password').textContent = '?';
     document.getElementById('password').style.fontFamily = 'Press Start 2P';
-  } else {
+  }
+  //   Showing the new password
+  else {
     document.querySelector('.password').textContent = passFinal;
     document.getElementById('password').style.width = '1500px';
     document.getElementById('password').style.fontFamily = 'VT323';
