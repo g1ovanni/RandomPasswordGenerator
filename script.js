@@ -16,16 +16,12 @@
 
 */
 
-const charlength = 0;
-
-// 0. Create event lister for Create button
-const variable = document
-  .querySelector('.create')
-  .addEventListener('click', function (charlength) {
-    charlength = Number(document.querySelector('.charlength').value);
-    console.log(charlength);
-    return charlength;
-  });
+// const charlength = 0;
+// 0. Create event lister for 'Create' button
+document.querySelector('.create').addEventListener('click', function () {
+  const charlength = Number(document.querySelector('.charlength').value);
+  console.log(charlength);
+});
 
 // console.log(`outside ${variable}`);
 /*
