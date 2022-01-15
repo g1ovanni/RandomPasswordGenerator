@@ -18,9 +18,17 @@
 
 // const charlength = 0;
 // 0. Create event lister for 'Create' button
+// 1. Save number of characters for the variable
+
+const displayMessage = function (message) {
+  document.querySelector(".message")
+};
+
 document.querySelector('.create').addEventListener('click', function () {
   const charlength = Number(document.querySelector('.charlength').value);
   console.log(charlength);
+
+  if (!charlength) displayMessage('🛑 No number');
 });
 
 // console.log(`outside ${variable}`);
