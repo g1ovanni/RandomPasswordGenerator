@@ -21,14 +21,16 @@
 // 1. Save number of characters for the variable
 
 const displayMessage = function (message) {
-  document.querySelector(".message")
+  document.querySelector('.message').textContent = message;
 };
 
 document.querySelector('.create').addEventListener('click', function () {
   const charlength = Number(document.querySelector('.charlength').value);
   console.log(charlength);
 
-  if (!charlength) displayMessage('🛑 No number');
+  // 1.1. When there is no input
+  if (!charlength)
+    displayMessage('The password should have between 8 and 20 characters');
 });
 
 // console.log(`outside ${variable}`);
